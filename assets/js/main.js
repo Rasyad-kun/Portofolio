@@ -253,4 +253,34 @@
     })
   });
 
+  /**
+  *Form Contact Run
+  */
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxmWj7p1W1hXy8stcQJborMWgrV-WFOMkxhOcdI3tpJm-ULMb2qBLyianaYY1niejOu/exec'
+  const form = document.forms['portofolio-contact-form']
+  const btnSend = document.querySelector('.btn-send')
+  const btnLoading = document.querySelector('.btn-loading')
+  const alrtSuccess = document.querySelector('.alert-success')
+  const alrtFailed = document.querySelector('.alert-danger')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+
+    btnLoading.classList.toggle('d-none')
+    btnSend.classList.toggle('d-none')
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(response => {
+        btnLoading.classList.toggle('d-none')
+        btnSend.classList.toggle('d-none')
+        alrtSuccess.classList.toggle('d-none')
+        form.reset()
+        console.log('Success!', response)
+      })
+      .catch(error => {
+        alrtFailed.classList.toggle('d-none')
+        console.error('Error!', error.message)
+      })
+  })
+
 })()

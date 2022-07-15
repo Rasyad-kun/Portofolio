@@ -28,8 +28,57 @@ a:hover {
   text-decoration: none;
 }
 
+/* a[title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+a[title]:after {
+  content: attr(title);
+
+  border: #c0c0c0 1px dotted;
+  padding: 5px 20px 5px 5px;
+  display: block;
+  z-index: 99999;
+  background: url(../images/status-info.png) #f0f0f0 no-repeat 100% 5%;
+  left: 0px;
+  margin: 10px;
+  width: 250px;
+  position: absolute;
+  top: 10px;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: 1px 1px 3px #222222;
+  white-space: nowrap;
+  color: #18d26e;
+
+
+
+  background-color: #00FF00;
+  color: #111;
+  font-size: 150%;
+  position: absolute;
+  padding: 1px 5px 2px 5px;
+  bottom: -1.6em;
+  left: 100%;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+}
+a[title] {
+  position: relative;
+} */
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
+}
+
+::selection {
+  background: #FF6A6A;
+  color: #fff;
 }
 
 /*--------------------------------------------------------------
@@ -326,6 +375,45 @@ section {
   color: #FF6A6A;
   font-weight: 500;
 }
+.about .content .fst-italic a {
+  font-weight: 500;
+  animation-name: deco;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+
+  display: inline;
+  background-repeat: no-repeat;
+  transition: all 500ms ease-in-out;
+
+  background-position: left;
+  background-size: 0% 100%;
+  background-image: linear-gradient(to right, #8EC5FC, #E0C3FC);
+  /* background-image: linear-gradient(to right, #FC5C7D, #6A82FB); */
+  /* background-image: linear-gradient(to right, #9ae6b4, yellow); */
+  padding-bottom: thickness;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+@keyframes deco {
+  0%   {text-shadow: 0 0 6px #FF6A6A}
+  25%  {text-shadow: 0 0 6px #00000075}
+  50%  {text-shadow: 0 0 6px #FF6A6A}
+  75%  {text-shadow: 0 0 6px #00000075}
+  100% {text-shadow: 0 0 6px #FF6A6A}
+}
+.about .content .fst-italic a:hover {
+  background-size: 100% 100%;
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
+  -webkit-animation: 0;
+  letter-spacing: 0.1em;
+  color: #000000;
+  font-weight: 600;
+  /* background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
 
 .about .content ul {
   list-style: none;
@@ -348,52 +436,6 @@ section {
 }
 .about .content p:last-child {
   margin-bottom: 0;
-}
-
-/*--------------------------------------------------------------
-# Facts
---------------------------------------------------------------*/
-.facts {
-  padding-bottom: 30px;
-}
-.facts .count-box {
-  padding: 30px;
-  width: 100%;
-}
-.facts .count-box i {
-  display: block;
-  font-size: 44px;
-  /* color: #149ddd; */
-  color: #FF6A6A;
-  float: left;
-  line-height: 0;
-}
-.facts .count-box span {
-  font-size: 48px;
-  line-height: 40px;
-  display: block;
-  font-weight: 700;
-  color: #050d18;
-  margin-left: 60px;
-}
-.facts .count-box p {
-  padding: 15px 0 0 0;
-  margin: 0 0 0 60px;
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  color: #122f57;
-}
-.facts .count-box a {
-  font-weight: 600;
-  display: block;
-  margin-top: 20px;
-  color: #122f57;
-  font-size: 15px;
-  font-family: "Poppins", sans-serif;
-  transition: ease-in-out 0.3s;
-}
-.facts .count-box a:hover {
-  color: #1f5297;
 }
 
 /*--------------------------------------------------------------
@@ -431,65 +473,25 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Resume
---------------------------------------------------------------*/
-.resume .resume-title {
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: #050d18;
-}
-.resume .resume-item {
-  padding: 0 0 20px 20px;
-  margin-top: -2px;
-  border-left: 2px solid #1f5297;
-  position: relative;
-}
-.resume .resume-item h4 {
-  line-height: 18px;
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
-  color: #050d18;
-  margin-bottom: 10px;
-}
-.resume .resume-item h5 {
-  font-size: 16px;
-  background: #e4edf9;
-  padding: 5px 15px;
-  display: inline-block;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-.resume .resume-item ul {
-  padding-left: 20px;
-}
-.resume .resume-item ul li {
-  padding-bottom: 10px;
-}
-.resume .resume-item:last-child {
-  padding-bottom: 0;
-}
-.resume .resume-item::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50px;
-  left: -9px;
-  top: 0;
-  background: #fff;
-  border: 2px solid #1f5297;
-}
-
-/*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
+
+.portfolio .section-title h2 a {
+  animation-name: deco-porto;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+@keyframes deco-porto {
+  0%   {text-shadow: 0 0 4px #FF6A6A}
+  25%  {text-shadow: 0 0 4px #00000075}
+  50%  {text-shadow: 0 0 4px #FF6A6A}
+  75%  {text-shadow: 0 0 4px #00000075}
+  100% {text-shadow: 0 0 4px #FF6A6A}
+}
+
 .portfolio #portfolio-flters {
   padding: 0;
   margin: 0 auto 35px auto;
@@ -625,6 +627,7 @@ section {
 } */
 
 .portfolio .portfolio-wrap .portfolio-links {
+  margin-top: .5rem;
   text-align: center;
   z-index: 4;
 }
